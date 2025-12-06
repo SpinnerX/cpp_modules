@@ -15,6 +15,7 @@ class StarterConanRecipe(ConanFile):
         self.tool_requires("cmake/4.1.2")
         self.tool_requires("ninja/1.13.1")
         self.tool_requires("engine3d-cmake-utils/4.0")
+        self.tool_requires("cmake-modules-toolchain/1.0.3")
 
     # Putting all of your packages here
     def requirements(self):

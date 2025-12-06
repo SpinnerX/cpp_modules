@@ -1,4 +1,3 @@
-set(CMAKE_CXX_MODULE_STD ON)
 cmake_minimum_required(VERSION 4.0)
 project(Starter CXX)
 
@@ -9,36 +8,23 @@ if(NOT CMAKE_GENERATOR MATCHES "Ninja|Visual Studio")
     message(FATAL_ERROR "C++20 modules require Ninja or Visual Studio generator")
 endif()
 
-set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD d0edc3af-4c50-42ea-a356-e2862fe7a444)
+set(CMAKE_CXX_SCAN_FOR_MODULES ON)
+set(CMAKE_EXPERIMENTAL_EXPORT_PACKAGE_DEPENDENCIES "1942b4fa-b2c5-4546-9385-83f254070067")
+
+# add_library(test_module test.cppm)
 
 add_executable(
     ${PROJECT_NAME}
-    application.cppm
+    application.cpp
 )
 
-set_property(TARGET Starter PROPERTY CXX_STANDARD 23)
-set_property(TARGET Starter PROPERTY CXX_STANDARD_REQUIRED ON)
+generate_compile_commands()
 
-# Add module files
 target_sources(${PROJECT_NAME} PUBLIC
     FILE_SET CXX_MODULES
     TYPE CXX_MODULES
     FILES
-    application.cppm
+    test.cppm
 )
 
-target_compile_options(${PROJECT_NAME} PUBLIC cxx_std_23)
-
-install(
-    TARGETS Starter
-    EXPORT starter_targets
-    FILE_SET CXX_MODULES DESTINATION .
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-)
-
-install(
-    DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/starter.dir/
-    DESTINATION modules
-    FILES_MATCHING PATTERN "*.pcm"
-)
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_23)
