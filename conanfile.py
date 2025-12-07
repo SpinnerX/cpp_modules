@@ -7,7 +7,7 @@ class StarterConanRecipe(ConanFile):
     name = "example"
     version = "1.0"
     settings = "os", "compiler", "build_type", "arch"
-    export_source = "CMakeLists.txt", "Application.cpp"
+    export_source = "CMakeLists.txt", "application.cpp"
 
     # Putting all of your build-related dependencies here
     def build_requirements(self):
