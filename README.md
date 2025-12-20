@@ -22,3 +22,9 @@ conan build . -b missing
 ## Running the Starter
 
 Running the executable, `./build/Release/Starter`
+
+
+# Notes
+
+In case, you need to make sure the clangd is not throwing any errors when using C++ modules. Make sure to apply the `--experimental-modules-support` flags in the clangd arguments tab.
+

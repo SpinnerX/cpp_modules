@@ -1,17 +1,15 @@
 // #include <print>
-import test;
+#include <array>
+#include <cstdint>
+import core;
 
-class box {
-public:
-    box() {
-        atlas::register_start(this, &box::test);
-    }
-
-    void test() {}
-};
 
 int main(){
-    print_hello();
+    core::buffer test_buffer;
+
+    std::array<uint8_t, 4> bytes = {0xFF, 0xFF, 0xFF, 0xFF};
+
+    test_buffer.write(bytes);
 
     return 0;
 }

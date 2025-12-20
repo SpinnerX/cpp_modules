@@ -15,16 +15,16 @@ add_executable(
     application.cpp
 )
 
-generate_compile_commands()
-
 target_sources(${PROJECT_NAME} PUBLIC
     FILE_SET CXX_MODULES
     TYPE CXX_MODULES
     FILES
-    test.cppm
-    test2.cppm
+    core/core.cppm
+    core/buffer.cppm
 )
 
-# target_compile_options(${PROJECT_NAME} PUBLIC -ftime-report)
+target_include_directories(${PROJECT_NAME} PUBLIC ./)
+
+generate_compile_commands()
 
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_23)
